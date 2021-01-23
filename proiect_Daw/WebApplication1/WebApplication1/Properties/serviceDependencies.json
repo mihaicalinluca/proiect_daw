@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "BlogPostsContext"
+    },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "NewspaperContext"
+    },
+    "mssql3": {
+      "type": "mssql",
+      "connectionId": "ArticleContext"
+    },
+    "mssql4": {
+      "type": "mssql",
+      "connectionId": "QuoteContext"
+    }
+  }
+}

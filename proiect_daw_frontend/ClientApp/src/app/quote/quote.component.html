@@ -1,0 +1,11 @@
+<ng-container *ngIf="(quote$ | async) as quote; else loading">
+
+    <h1>{{ quote.title }}</h1>
+    <div>{{ quote.body }}</div>
+    <ul>
+      <li>{{ quote.creator }}</li>
+      <li>{{ quote.dt }}</li>
+    </ul>
+  
+  </ng-container>
+  <ng-template #loading>Loading…</ng-template>

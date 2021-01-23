@@ -1,0 +1,29 @@
+<h1>Quotes posts</h1>
+
+<p *ngIf="!(quotes$ | async)"><em>Loading...</em></p>
+<p>
+  <a [routerLink]="['/quotes/add']" class="btn btn-primary float-right mb-3">New quote</a>
+</p>
+
+<table class="table table-sm table-hover" *ngIf="(quotes$ | async)?.length>0">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let quote of (quotes$ | async)">
+      <td>{{ quote.quoteId }}</td>
+      <td><a [routerLink]="['/quotes/quote/', quote.quoteId]">{{ quote.title }}</a></td>
+      <td>{{ quote.creator }}</td>
+      <td>{{ quote.dt | date: "dd.MM.y" }}</td>
+      <td><a [routerLink]="['/quotes/edit/', quote.quoteId]" class="btn btn-primary btn-sm float-right">Edit</a></td>
+      <td><a [routerLink]="" (click)="delete(quote.quoteId)" class="btn btn-danger btn-sm float-right">Delete</a></td>
+    </tr>
+  </tbody>
+</table>

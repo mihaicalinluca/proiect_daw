@@ -1,0 +1,11 @@
+<ng-container *ngIf="(article$ | async) as article; else loading">
+
+    <h1>{{ article.title }}</h1>
+    <div>{{ article.body }}</div>
+    <ul>
+      <li>{{ article.creator }}</li>
+      <li>{{ article.dt }}</li>
+    </ul>
+  
+  </ng-container>
+  <ng-template #loading>Loading…</ng-template>

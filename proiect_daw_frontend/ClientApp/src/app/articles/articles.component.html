@@ -1,0 +1,29 @@
+<h1>Articles</h1>
+
+<p *ngIf="!(articles$ | async)"><em>Loading...</em></p>
+<p>
+  <a [routerLink]="['/articles/add']" class="btn btn-primary float-right mb-3">New article</a>
+</p>
+
+<table class="table table-sm table-hover" *ngIf="(articles$ | async)?.length>0">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let article of (articles$ | async)">
+      <td>{{ article.articleId }}</td>
+      <td><a [routerLink]="['/article/', article.articleId]">{{ article.title }}</a></td>
+      <td>{{ article.creator }}</td>
+      <td>{{ article.dt | date: "dd.MM.y" }}</td>
+      <td><a [routerLink]="['/articles/edit/', article.articleId]" class="btn btn-primary btn-sm float-right">Edit</a></td>
+      <td><a [routerLink]="" (click)="delete(article.articleId)" class="btn btn-danger btn-sm float-right">Delete</a></td>
+    </tr>
+  </tbody>
+</table>
